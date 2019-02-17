@@ -1,32 +1,82 @@
 //Dependencies
 import React, { Component } from 'react';
+import { Chart } from "react-google-charts";
 
 //Data
 import data  from './data.json';
+
+//Components
+import Paralax from '../paralax';
+
 //Styled-Components
 import { TableContainer } from './styled';
 
+
 class TableComponent extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            data: data,
+            dataChart:[]
+        }
+        this.handleDataChart = this.handleDataChart.bind(this);
+    }
+    handleDataChart(){
+        var dataChart =[['Task', 'Hours per Day']];
+        data.Table.map((datamap)=>{
+            return(
+            dataChart.push([datamap.Column, datamap.Number1])
+            )
+        })
+        this.setState({
+            dataChart: dataChart
+        })
+    }
+    componentDidMount() {
+        this.handleDataChart();
+    }
     render() {
-        console.log("datos json", data.Table[0]);
         return (
             <div>
+                <Paralax 
+                    titleProps="Table"
+                    imgUrl="https://cdnmundo1.img.sputniknews.com/images/108359/63/1083596310.jpg"
+                />
+                <h1>Table and Chart</h1>
                 
+
+
                 <div className="row my-4">
                     <div className="col-lg-3 col-md-4">
-                        <div className="card">
-                            <img className="card-img-top img-fluid" src="//placehold.it/740x180/bbb/fff?text=..." alt="Card image cap" />
+                        <div className="card">            
+                            <img className="card-img-top img-fluid" src="//placehold.it/740x180/bbb/fff?text=..." alt="esta es una imagen" />
                             <div className="card-body">
                                 <h4 className="card-title">Layouts</h4>
                                 <p className="card-text">Flexbox provides simpler, more flexible layout options like vertical centering.</p>
-                                <a href="#" className="btn btn-primary">Button</a>
+                                <Chart
+                                    width={'100%'}
+                                    height={'auto'}
+                                    chartType="PieChart"
+                                    loader={<div>Loading Chart</div>}
+                                    data={
+                                       this.state.dataChart
+                                    }
+                                    options={{
+                                        legend: 'none',
+                                        pieSliceText: 'label',
+                                        title: 'Title',
+                                        pieStartAngle: 100,
+                                    }}
+                                    rootProps={{ 'data-testid': '1' }}
+                                />
+                                <button href="#" className="btn btn-primary">Button</button>
                             </div>
                         </div>
                         <div className="card card-inverse bg-inverse mt-3">
                             <div className="card-body">
                                 <h3 className="card-title">Flexbox</h3>
                                 <p className="card-text">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                <a href="#" className="btn btn-outline-secondary">Outline</a>
+                                <button href="#" className="btn btn-outline-secondary">Outline</button>
                             </div>
                         </div>
                     </div>
@@ -46,9 +96,9 @@ class TableComponent extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data.Table.map((tr) => {
+                                    {data.Table.map((tr,tri) => {
                                         return(
-                                            <tr>
+                                            <tr key={tri}>
                                                 <td>{tr.id}</td>
                                                 <td>{tr.Label}</td>
                                                 <td>{tr.Header}</td>
@@ -60,7 +110,6 @@ class TableComponent extends Component {
                                             </tr>
                                         )
                                     })}
-                                    
                                 </tbody>
                             </TableContainer>
                         </div>

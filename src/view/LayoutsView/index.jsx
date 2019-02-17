@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
+//Components
+import Paralax from '../paralax';
+
 class LayoutsView extends Component {
     render() {
         return (
             <div>
-                <a id="layouts"></a>
+                <Paralax 
+                    titleProps="Layouts"
+                    imgUrl="https://www.proandroid.com/wp-content/uploads/2018/09/fondo-pantalla-huawei.jpg"
+                />
                 <hr />
                 <h2 className="sub-header mt-5">Interesting layouts and elements</h2>
                 <div className="row mb-3">
@@ -76,13 +82,13 @@ class LayoutsView extends Component {
                         <div className="card card-default card-body">
                             <ul id="tabsJustified" className="nav nav-tabs nav-justified">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="" data-target="#tab1" data-toggle="tab">List</a>
+                                    <div className="nav-link" href="" data-target="#tab1" data-toggle="tab">List</div>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" href="" data-target="#tab2" data-toggle="tab">Profile</a>
+                                    <div className="nav-link active" href="" data-target="#tab2" data-toggle="tab">Profile</div>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="" data-target="#tab3" data-toggle="tab">More</a>
+                                    <div className="nav-link" href="" data-target="#tab3" data-toggle="tab">More</div>
                                 </li>
                             </ul>
                             {/* <!--/tabs--> */}
@@ -90,10 +96,10 @@ class LayoutsView extends Component {
                             <div id="tabsJustifiedContent" className="tab-content">
                                 <div className="tab-pane" id="tab1">
                                     <div className="list-group">
-                                        <a href="" className="list-group-item"><span className="float-right label label-success">51</span> Home Link</a>
-                                        <a href="" className="list-group-item"><span className="float-right label label-success">8</span> Link 2</a>
-                                        <a href="" className="list-group-item"><span className="float-right label label-success">23</span> Link 3</a>
-                                        <a href="" className="list-group-item text-muted">Link n..</a>
+                                        <div href="" className="list-group-item"><span className="float-right label label-success">51</span> Home Link</div>
+                                        <div href="" className="list-group-item"><span className="float-right label label-success">8</span> Link 2</div>
+                                        <div href="" className="list-group-item"><span className="float-right label label-success">23</span> Link 3</div>
+                                        <div href="" className="list-group-item text-muted">Link n..</div>
                                     </div>
                                 </div>
                                 <div className="tab-pane active" id="tab2">
@@ -102,18 +108,18 @@ class LayoutsView extends Component {
                                             <h4>Profile Section</h4>
                                             <p>Imagine creating this simple user profile inside a tab card.</p>
                                         </div>
-                                        <div className="col-sm-5"><img src="//placehold.it/170" className="float-right img-responsive img-rounded" /></div>
+                                        <div className="col-sm-5"><img src="//placehold.it/170" className="float-right img-responsive img-rounded" alt="hola imagen" /></div>
                                     </div>
                                     <hr />
-                                    <a href="javascript:;" className="btn btn-info btn-block">Read More Profiles</a>
+                                    <button className="btn btn-info btn-block">Read More Profiles</button>
                                     <div className="spacer5"></div>
                                 </div>
                                 <div className="tab-pane" id="tab3">
                                     <div className="list-group">
-                                        <a href="" className="list-group-item"><span className="float-right label label-info label-pill">44</span> <code>.panel</code> is now <code>.card</code></a>
-                                        <a href="" className="list-group-item"><span className="float-right label label-info label-pill">8</span> <code>.nav-justified</code> is deprecated</a>
-                                        <a href="" className="list-group-item"><span className="float-right label label-info label-pill">23</span> <code>.badge</code> is now <code>.label-pill</code></a>
-                                        <a href="" className="list-group-item text-muted">Message n..</a>
+                                        <div  className="list-group-item"><span className="float-right label label-info label-pill">44</span> <code>.panel</code> is now <code>.card</code></div>
+                                        <div  className="list-group-item"><span className="float-right label label-info label-pill">8</span> <code>.nav-justified</code> is deprecated</div>
+                                        <div  className="list-group-item"><span className="float-right label label-info label-pill">23</span> <code>.badge</code> is now <code>.label-pill</code></div>
+                                        <div  className="list-group-item text-muted">Message n..</div>
                                     </div>
                                 </div>
                             </div>

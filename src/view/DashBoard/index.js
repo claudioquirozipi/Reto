@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 
 import backgrounDark from '../../Assets/img/backgrounDark.jpg';
 import SideBarView from './SideBarView';
+//Styled-Components
 import { 
     ContainerNav,
     ContainerDashBoard,
     ContainerForm,
+    ContainerLogo,
     Button,
     ToggleDashBoard
     } from './styled';
+//Assets
+import logo from '../../Assets/img/palanca-de-mando.svg';
 
 class DashBoard extends Component {
     constructor(props) {
@@ -28,14 +32,13 @@ class DashBoard extends Component {
         })
     }
     handleToggleDashBoard() {
-        console.log("hola esto es una prueba");
         this.setState({
             ToggleDashBoard: !this.state.ToggleDashBoard
         })
     }
     render() {
         return (
-            <frameElement>
+            <div>
                 <ContainerNav 
                 FullViewNav={this.state.FullViewDashBoard}
                 ToggleDashBoard={this.state.ToggleDashBoard}
@@ -46,13 +49,16 @@ class DashBoard extends Component {
                             <input type="text"/>
                             <input type="password"/>
                             <div>
-                                <Button onClick={this.handleFullView}>Login</Button>
-                                <Button onClick={this.handleFullView}>Setin</Button>
+                                <Button marginSC onClick={this.handleFullView}>Login</Button>
+                                <Button marginSC onClick={this.handleFullView}>Setin</Button>
                             </div>
                         </form>
                     </ContainerForm>
                     <ContainerDashBoard>
-                        <Button onClick={this.handleFullView}>Logout</Button>
+                        <ContainerLogo>
+                            <img src={logo} alt="logo"/>
+                            <Button onClick={this.handleFullView}>Logout</Button>
+                        </ContainerLogo>
                         <SideBarView/>
                     </ContainerDashBoard>
                 </ContainerNav>
@@ -60,7 +66,7 @@ class DashBoard extends Component {
                     onClick={this.handleToggleDashBoard}
                     FullViewNav={this.state.FullViewDashBoard}
                 >X</ToggleDashBoard>
-            </frameElement>
+            </div>
         );
     }
 }

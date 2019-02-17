@@ -14,7 +14,6 @@ export const ContainerNav = styled.div`
     transform-origin: 0 center;
     @media ${MQ.md} {
         width: 215px;
-        background: red;
     }
     ${props => props.FullViewNav && css`
         width: 100%;
@@ -76,10 +75,10 @@ export const ContainerForm = styled.div`
             background: ${colors.white};
             color: ${colors.black};
             border-radius: 20px;
-            border: 3px solid ${colors.blue};
             padding: 3px 30px;
             transition: all 1s;
             outline: none;
+            border: 3px solid ${colors.blue};
             :focus {
                 border: 3px solid ${colors.blueLight};
             }
@@ -90,21 +89,39 @@ export const ContainerForm = styled.div`
         justify-content: center;
     }
 `;
+export const ContainerLogo = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 5%;
+    img {
+        width: 30px;
+        height: auto;
+    }
+`;
+
 export const Button = styled.button`
     background: ${colors.blueDark};
     color: ${colors.blueLight};
-    padding: 3px 30px;
-    margin: 0 10px 15px;
+    border: 3px solid ${colors.blueDark};
+    padding: 0px 30px;
     border-radius: 20px;
-    border: none;
     outline: none;
-    transition: transform .3s;
+    transition: transform .3s, border-color 1s;
+    cursor: pointer;
+    :hover {
+        border: 3px solid ${colors.blue};
+    }
     :focus {
         outline: none;
     }
     :active {
-        transform: translate(1px, 1px);
+        transform: translate(3px, 3px);
+        border: 3px solid ${colors.blueLight};
     }
+    ${props => props.marginSC && css`
+        margin: 0 10px 15px;
+    `}
 `;
 
 export const ToggleDashBoard = styled.div`
@@ -130,3 +147,71 @@ export const ToggleDashBoard = styled.div`
         transition: transform 1s;
     `};
 `;
+//**********************Form ***********
+export const FormSC = styled.form`
+    position: relative;
+    margin: 30px 5%; 
+`;
+export const FormControlSC = styled.input`
+    width: 100%;
+    background: ${colors.white};
+    color: ${colors.black};
+    border-radius: 20px;
+    padding: 3px 30px;
+    transition: all 1s;
+    outline: none;
+    border: 3px solid ${colors.blue};
+    :focus {
+        border: 3px solid ${colors.blueLight};
+    }
+`;
+export const ButtonSC = styled.button`
+    background: transparent;
+    background-image: url(${props => props.searchSC});
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform .3s;
+    :active {
+        transform: translate(1px, 1px);
+    }
+`;
+
+// ************* SideBarView ********************
+export const UlContainerLink = styled.ul`
+    margin: 30px 0;
+    padding: 0;     
+    list-style: none;
+`
+export const LiContainerLink = styled.li`
+    a {
+        background: ${colors.black};
+        color: ${colors.blueLight};
+        text-decoration: none;
+        font-weight: 700;
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        :hover {
+            background: ${colors.blueDark};
+        }
+    }
+`
+export const UlToggelHeight = styled.ul`
+    background: ${colors.blue};       
+    max-height: 0;
+    overflow:hidden;
+    transition: max-height 1s;
+    ${props => props.displayView && css`
+        max-height: 500px;
+        transition: max-height 1s 1s;
+    `};
+`

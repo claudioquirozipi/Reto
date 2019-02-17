@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 
+//Components
+import Paralax from '../paralax';
+
 class MasonryView extends Component {
     render() {
         return (
             <div>
-                                    <a id="flexbox"></a>
+                <Paralax 
+                    titleProps="Masonry"
+                    imgUrl="https://lh6.googleusercontent.com/-a_9Yxlct8nE/Ud_A6PcsveI/AAAAAAAAARk/hsE39Mh6Ayk/w1435-h897-no/fondo+de+pantalla+de+paraiso+de+agua+12.jpg"
+                />
+                
                     <hr />
                     <h2 className="mt-5">Masonry-style grid columns</h2>
                     <h6>with Bootstrap 4 flexbox</h6>
 
                     <div className="card-columns mb-3">
                         <div className="card">
-                            <img className="card-img-top img-fluid" src="//placehold.it/600x200/444/fff?text=..." alt="Card image cap" />>
+                            <img className="card-img-top img-fluid" src="//placehold.it/600x200/444/fff?text=..." alt="esta es una imagen" />
                             <div className="card-body">
                                 <h4 className="card-title">New XL Grid Tier</h4>
                                 <p className="card-text">With screens getting smaller, Bootstrap 4 introduces a new grid breakpoint with the col-xl-* classes. This extra tier extends the media query range all the way down to 576 px. Eventhough the new XL tier would make one think it’s been added to support extra large screens, it’s actually the opposite.</p>
@@ -28,7 +35,7 @@ class MasonryView extends Component {
                             </blockquote>
                         </div>
                         <div className="card">
-                            <img className="card-img-top img-fluid" src="//placehold.it/600x200/bbb/fff?text=..." alt="Card image cap" />
+                            <img className="card-img-top img-fluid" src="//placehold.it/600x200/bbb/fff?text=..." alt="otra imagen" />
                             <div className="card-body">
                                 <h4 className="card-title">Card title</h4>
                                 <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -51,7 +58,7 @@ class MasonryView extends Component {
                             <p className="card-text"><small className="text-muted">Last updated 5 mins ago</small></p>
                         </div>
                         <div className="card">
-                            <img className="card-img img-fluid" src="//placehold.it/600x200/777/fff?text=..." alt="Card image" />
+                            <img className="card-img img-fluid" src="//placehold.it/600x200/777/fff?text=..." alt="hola" />
                         </div>
                         <div className="card card-body text-right">
                             <blockquote className="card-blockquote">

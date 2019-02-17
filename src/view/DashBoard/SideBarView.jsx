@@ -1,45 +1,139 @@
-import React from 'react'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+//Dependencies
+import React, { Component } from 'react'
 
+// Components
 import { Link } from 'react-router-dom';
-const SideBarView = () => {
-    return (
-        <div className="col-md-3 col-lg-2 sidebar-offcanvas bg-dark pl-0" id="sidebar" role="navigation">
-            <Nav defaultActiveKey="/home" className="flex-column" >
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
-                </Form>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/table">Table</Link></li>
-                    <li><Link to="/layouts">Layouts</Link></li>
-                    <li><Link to="/masonry">Masonry</Link></li>
-                </ul>
-                <Nav.Link href="/home">Getting Started</Nav.Link>
-                <Nav.Link eventKey="Charts">Charts</Nav.Link>
-                <Nav.Link eventKey="News">News</Nav.Link>
-                <Nav.Link eventKey="Tables"><Link to="/">Home</Link></Nav.Link>
-                <Nav.Link eventKey="Tables"><Link to="/table">Tables</Link></Nav.Link>
-                <Nav.Link eventKey="Menus">Menus</Nav.Link>
-                <Nav.Link eventKey="Typography">Typography</Nav.Link>
-                {/* <Nav.Link eventKey="disabled" disabled>
-                    Disabled
-                </Nav.Link> */}
-                <NavDropdown title="Others" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
-        </div>
-    )
-}
+// Styled-Components
+import { 
+    UlContainerLink,
+    LiContainerLink,
+    UlToggelHeight,
+    FormSC,
+    FormControlSC,
+    ButtonSC
+} from './styled';
 
-export default SideBarView
+//Assets
+import search from '../../Assets/img/search.svg';
+class SideBarView extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            home: false,
+            table: false,
+            layouts: false,
+            masonry: false
+        }
+        this.homeRef = React.createRef()
+        this.tableRef = React.createRef()
+        this.layoutsRef = React.createRef()
+        this.masonryRef = React.createRef()
+
+        this.handleToggel = this.handleToggel.bind(this);
+    }
+    handleToggel(e){
+        switch(e.target.id) {
+            case "home":
+                this.setState({
+                    home: !this.state.home,
+                    table: false,
+                    layouts: false,
+                    masonry: false
+                })
+                break;
+            case "table":
+                this.setState({
+                    home: false,
+                    table: !this.state.table,
+                    layouts: false,
+                    masonry: false
+                })
+                break;
+            case "layouts":
+                this.setState({
+                    home: false,
+                    table: false,
+                    layouts: !this.state.layouts,
+                    masonry: false
+                })
+                break;
+            case "masonry":
+                this.setState({
+                    home: false,
+                    table: false,
+                    layouts: false,
+                    masonry: !this.state.masonry
+                })
+                break;
+            default:
+              // code block
+          }
+        
+    }
+    render() {
+        return (
+            <div>
+                <FormSC action="">
+                    <FormControlSC type="text" placeholder="Search"/>
+                    <ButtonSC searchSC={search}/>
+                </FormSC>
+                <UlContainerLink>
+                    <LiContainerLink >
+                        <Link 
+                            to="/" 
+                            onClick={this.handleToggel} 
+                            ref={this.homeRef}
+                            id="home">
+                            Home
+                        </Link>
+                        <UlToggelHeight displayView={this.state.home}>
+                            <li>item1</li>
+                            <li>item1</li>
+                            <li>item1</li>
+                        </UlToggelHeight>
+                    </LiContainerLink>
+                    <LiContainerLink>
+                        <Link 
+                            to="/table"
+                            onClick={this.handleToggel} 
+                            ref={this.tableRef}
+                            id="table"
+                        >Table</Link>
+                        <UlToggelHeight displayView={this.state.table}>
+                            <li>item1</li>
+                            <li>item1</li>
+                            <li>item1</li>
+                        </UlToggelHeight>    
+                    </LiContainerLink>
+                    <LiContainerLink>
+                        <Link 
+                            to="/layouts"
+                            onClick={this.handleToggel} 
+                            ref={this.layoutsRef}
+                            id="layouts"
+                        >Layouts</Link>
+                        <UlToggelHeight displayView={this.state.layouts}>
+                            <li>item1</li>
+                            <li>item1</li>
+                            <li>item1</li>
+                        </UlToggelHeight>
+                    </LiContainerLink>
+                    <LiContainerLink>
+                        <Link 
+                            to="/masonry"
+                            onClick={this.handleToggel} 
+                            ref={this.masonryRef}
+                            id="masonry"
+                        >Masonry</Link>
+                        <UlToggelHeight displayView={this.state.masonry}>
+                            <li>item1</li>
+                            <li>item1</li>
+                            <li>item1</li>
+                        </UlToggelHeight>
+                    </LiContainerLink>
+                </UlContainerLink>
+            </div>
+        );
+    }
+}
+export default SideBarView;
